@@ -1,5 +1,7 @@
-Ikaros ReadMe
+Ikaros 2 ReadMe
 =============
+
+This is the last version of Ikaros 2 before the transition to version 3. It is no longer maintained and is available here for backward compatibility.
 
 This is the public distribution of the Ikaros kernel together with a number of functional modules. This version is mainly intended for potential developers and not for more general use. The current distribution includes versions for OS X and Linux.
 
