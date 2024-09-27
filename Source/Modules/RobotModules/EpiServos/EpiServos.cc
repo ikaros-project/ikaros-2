@@ -235,6 +235,13 @@ bool EpiServos::Communication(int IDMin, int IDMax, int IOIndex, dynamixel::Port
 void EpiServos::Init()
 {
     // Robots configurations
+    robot["EpiPink"] = {.serialPortPupil = "/dev/cu.usbserial-FT66U0T9",
+                         .serialPortHead = "/dev/cu.usbserial-FT66WMQF",
+                         .serialPortBody = "",
+                         .serialPortLeftArm = "",
+                         .serialPortRightArm = "",
+                         .type = "EpiTorso"};
+
     robot["EpiWhite"] = {.serialPortPupil = "/dev/cu.usbserial-FT66WV4A",
                          .serialPortHead = "/dev/cu.usbserial-FT6S4JL9",
                          .serialPortBody = "",
