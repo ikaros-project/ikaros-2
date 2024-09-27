@@ -168,6 +168,9 @@ nrServosTotal = "19"
 <group  name = "EpiOrange"
 	robotType = "Torso"
 />
+<group  name = "EpiPink"
+	robotType = "Torso"
+/>
 
 
 
