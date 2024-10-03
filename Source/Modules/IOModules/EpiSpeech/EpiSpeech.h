@@ -89,6 +89,8 @@ public:
 
     void 		Init();
     void 		Tick();
+
+    void        Command(std::string s, float x, float y, std::string value);        
 };
 
 #endif

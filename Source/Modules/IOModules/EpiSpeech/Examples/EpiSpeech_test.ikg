@@ -64,14 +64,13 @@
 	<switch  frame-style = "" height = "21" label = "blue" parameter = "Attribute1.data" show_frame = "false" show_title = "false" single_trig = "true" style = "" title = "Blue" value = "1" width = "101" x = "60" xindex = "2" y = "440" yindex = "0"/>
 	<slider-horizontal  x = "420" y = "360" height = "121" width = "101" title = "Attribute 2" parameter = "Attribute2.data" select = "0" count = "1" labels = "" min = "0" max = "1" step = "0.01" show_values = "false" show_title = "true" show_frame = "false" style = "" frame-style = ""/>
 
+	<button  x = "200" y = "920" height = "81" width = "381" title = "say" label = "SAY" color = "undefined" background = "undefined" icon = "" type = "push" radioGroup = "" multiGroup = "" command = "EpiSpeech.say" commandUp = "" parameter = "" file_names = "" value = "hello there!" valueUp = "0" xindex = "0" yindex = "0" enableSource = "" show_title = "false" show_frame = "false" style = "" frame-style = ""/>
 
  </view>
 
 
     <module class = "Logger" name = "Logger" />
 </group>
-
-
 
 
 

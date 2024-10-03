@@ -1,7 +1,7 @@
 //
 //	EpiSpeech.cc		This file is a part of the IKAROS project
 //
-//    Copyright (C) 2022 Christian Balkenius
+//    Copyright (C) 2022-2024 Christian Balkenius
 //
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
@@ -200,6 +200,15 @@ EpiSpeech::Tick()
 }
 
 
+
+void
+EpiSpeech::Command(std::string s, float x, float y, std::string value)
+{
+    std::cout << "COMMAND:" << s << " " << value <<std::endl;
+
+    std::string com = speech_command + " \""+ value +"\"";
+    system(com.c_str());
+}
 
 static InitClass init("EpiSpeech", &EpiSpeech::Create, "Source/Modules/IOModules/EpiSpeech/");
 
