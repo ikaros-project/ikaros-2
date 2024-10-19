@@ -285,9 +285,43 @@ nrServosTotal = "19">
 </view>
 
 
+<!-- adding speech module -->
 
+<module
+			class = "Constant"
+			name = "Command"
+			data  = "0 0 0 0 0 0"
+		/>
 
+		<module
+			class = "Constant"
+			name = "Attribute1"
+			data  = "0 0 0"
+		/>
 
+				<module
+			class = "Constant"
+			name = "Attribute2"
+			data  = "0.5"
+		/>
+		<module
+			class = "Constant"
+			name = "Inhibition"
+			data  = "0"
+		/>
+
+		<module
+			class = "EpiSpeech"
+			name = "EpiSpeech"
+			text  = "one,two,three,111, robotic beings rule the world, the humans are dead."
+			voice = "Noelle (Enhanced)"
+		/>
+		
+        <connection  source = "Command.OUTPUT"  target = "EpiSpeech.TRIG" />
+        <connection  source = "Inhibition.OUTPUT"  target = "EpiSpeech.INHIBITION" />
+
+	<connection  source = "Attribute1.OUTPUT"  target = "EpiSpeech.ATTRIBUTE1" />
+	<connection  source = "Attribute2.OUTPUT"  target = "EpiSpeech.ATTRIBUTE2" />
 
 </group>
 
