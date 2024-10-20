@@ -23,4 +23,3 @@ def say(text):
 
 say("Hello, I am Epi the robot!")
 
-

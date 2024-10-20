@@ -20,12 +20,13 @@
 //    See http://www.ikaros-project.org/ for more information.
 //
 
-
 #include "EpiSpeech.h"
 
 #include <spawn.h>
 
 using namespace ikaros;
+
+
 
 void
 SpeechSound::Play(const char * command)
@@ -122,6 +123,8 @@ EpiSpeech::Init()
     rms = GetOutputArray("RMS");
     volume = GetOutputArray("VOLUME");
     
+    speaking = false;
+
     command = GetValue("command");
     speech_command = GetValue("speech_command");
 
@@ -137,6 +140,18 @@ EpiSpeech::Init()
 void
 EpiSpeech::Tick()
 {
+    if(speaking && speaking_timer.GetTime() > lag)
+    {
+        volume[0] = 0.015 + random(0, 0.015);
+        volume[1] = volume[0];
+        return;
+    }
+    else
+    {
+        volume[0] = 0.0;
+        volume[1] = 0.0;
+    }
+
     // Check for trig and queue sound
 
     for(int i=0; i<size; i++)
@@ -192,7 +207,6 @@ EpiSpeech::Tick()
     }
 
 
-
     // Store last trig and sound
 
     copy_array(last_trig, trig, size);
@@ -201,13 +215,23 @@ EpiSpeech::Tick()
 
 
 
+void 
+EpiSpeech::SayText(const std::string &text) 
+{
+    speaking_timer.Reset();
+    speaking = true;
+    std::thread([this, text]() {
+        std::string com = speech_command + " \""+ text +"\"";
+        int result = system(com.c_str());
+        speaking = false; 
+    }).detach();
+}
+    
+
 void
 EpiSpeech::Command(std::string s, float x, float y, std::string value)
 {
-    std::cout << "COMMAND:" << s << " " << value <<std::endl;
-
-    std::string com = speech_command + " \""+ value +"\"";
-    system(com.c_str());
+    SayText(value);
 }
 
 static InitClass init("EpiSpeech", &EpiSpeech::Create, "Source/Modules/IOModules/EpiSpeech/");
