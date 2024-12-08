@@ -1076,7 +1076,7 @@ SequenceRecorder::GetJSONData(const std::string & name, const std::string & tab)
     else if(name=="SEQUENCE")
     {
         int n = sequence_data["sequences"][current_sequence]["keypoints"].size();
-        if(n>400) // 400 = 10 s
+        if(n>400*6) // 400 = 10 s
         {
             return "{}"; //Minimal JSON
         }
