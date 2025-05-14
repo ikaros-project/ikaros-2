@@ -1,7 +1,7 @@
 //
 //	EpiSpeech.h		This file is a part of the IKAROS project
 // 						
-//    Copyright (C) 2022 Christian Balkenius
+//    Copyright (C) 2022-2024 Christian Balkenius
 //
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
@@ -71,6 +71,10 @@ public:
     float   scale_volume;
     float   lag;
 
+    std::atomic<bool> speaking;
+    Timer             speaking_timer;
+
+
     const char *  command;
     std::string  speech_command;
     
@@ -89,6 +93,8 @@ public:
 
     void 		Init();
     void 		Tick();
+
+    void        SayText(const std::string &text);
 
     void        Command(std::string s, float x, float y, std::string value);        
 };
