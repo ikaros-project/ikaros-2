@@ -112,13 +112,13 @@ nrServosTotal = "6"
 	<!-- The robot can "speak" by playing mp3 files. -->
 	<!-- You can have multiple sounds that can be triggered seperatly. -->
 
-	<module
+	<_module
 	    class = "SoundOutput"
 		name = "SoundOutput"
 		sounds  = "Sounds/ok2.mp3"
         command = "afplay" 
 	/>	
-		<connection  source = "SoundTrigger.OUTPUT"  target = "SoundOutput.INPUT" />
+		<_connection  source = "SoundTrigger.OUTPUT"  target = "SoundOutput.INPUT" />
 	<module class = "Constant" name = "SoundTrigger" data = "0" />
 
 	<!-- 			LED			 			-->
