@@ -175,7 +175,7 @@ Serial::Serial(const char * device_name, unsigned long baud_rate)
 #ifdef SET_LOW_LATENCY_APPLE_DRIVER
 	// Setting latency on apple driver.
 	unsigned long microseconds = 2ULL; // 2ms
-	if ( -1 == ioctl(socket_fd_, IOSSDATALAT, &microseconds) ) {
+	if ( -1 == ioctl(data->fd, IOSSDATALAT, &microseconds) ) {
 		// set latency
 		fprintf(stderr, "\nError calling ioctl(..., IOSSDATALAT, ...)\n");
 	}
