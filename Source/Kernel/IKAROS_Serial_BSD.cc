@@ -171,7 +171,15 @@ Serial::Serial(const char * device_name, unsigned long baud_rate)
 	if (ret)
 		throw SerialException(device_name, "Could not set baud rate", errno);
 #endif
-	
+
+#ifdef SET_LOW_LATENCY_APPLE_DRIVER
+	// Setting latency on apple driver.
+	unsigned long microseconds = 2ULL; // 2ms
+	if ( -1 == ioctl(socket_fd_, IOSSDATALAT, &microseconds) ) {
+		// set latency
+		fprintf(stderr, "\nError calling ioctl(..., IOSSDATALAT, ...)\n");
+	}
+#endif
 	// To make sure that the buffers are empty flush them after 500 ms.
 	Timer t;
 	t.Sleep(500);
